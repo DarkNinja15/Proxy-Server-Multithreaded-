@@ -18,19 +18,8 @@ public class TCPServer{
             
 
             // connecting to a destination server
+            new Thread(new DestHandler("localhost", 8081)).start();
 
-            int destPort=8081;
-
-
-            Socket destSocket=new Socket("localhost",destPort);
-            
-            // InputStream inFromClient=clientSocket.getInputStream();
-            // OutputStream outToClient=clientSocket.getOutputStream();
-
-            // InputStream inFromDest=destSocket.getInputStream();
-            OutputStream outToDest=destSocket.getOutputStream();
-
-            outToDest.write("Hello from server".getBytes());
 
             clientSocket.close();
             sc.close();

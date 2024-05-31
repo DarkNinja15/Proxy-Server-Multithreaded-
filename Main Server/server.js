@@ -7,7 +7,11 @@ const server = net.createServer((socket) => {
 
   socket.on("data", (data) => {
     console.log(`Client data: ${data.toString()}`);
-    socket.write("Hello from the server!");
+    setTimeout(() => {
+      console.log("5 seconds passed");
+      socket.write("Hello from the server after 5 secs!"); // 
+    }, 5000);
+    // socket.write("Hello from the server!");
   });
 
   socket.on("end", () => {
