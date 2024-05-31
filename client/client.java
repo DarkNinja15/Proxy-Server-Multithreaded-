@@ -1,3 +1,4 @@
+package client;
 import java.net.*;
 import java.io.IOException;
 import java.io.InputStream;

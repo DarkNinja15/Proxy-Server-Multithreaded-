@@ -1,3 +1,4 @@
+package threadPool;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -5,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 public class ProxyThreadPool {
     private ThreadPoolExecutor threadPoolExecutor;
 
-    ProxyThreadPool(int corePoolSize, int maxPoolSize, long keepAliveTime) {
+    public ProxyThreadPool(int corePoolSize, int maxPoolSize, long keepAliveTime) {
         threadPoolExecutor = new ThreadPoolExecutor(corePoolSize, maxPoolSize, keepAliveTime, TimeUnit.MINUTES,
                 new LinkedBlockingQueue<Runnable>());
     }

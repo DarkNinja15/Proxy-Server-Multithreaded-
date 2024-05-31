@@ -1,3 +1,4 @@
+package lruCache;
 public class ListNode {
     String data;
     ListNode next;

@@ -1,5 +1,10 @@
+package serverHandler;
+import lruCache.LRUcache;
+
+
 import java.io.*;
 import java.net.Socket;
+
 
 public class DestHandler implements Runnable{
     private final String destIP;
@@ -7,7 +12,7 @@ public class DestHandler implements Runnable{
     private final Socket clientSocket;
     private final LRUcache cache;
 
-    DestHandler(String destIP,int destPort,Socket clientSocket,LRUcache cache){
+    public DestHandler(String destIP,int destPort,Socket clientSocket,LRUcache cache){
         this.destIP=destIP;
         this.destPort=destPort;
         this.clientSocket=clientSocket;

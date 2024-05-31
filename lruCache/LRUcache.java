@@ -1,3 +1,4 @@
+package lruCache;
 import java.util.*;
 
 public class LRUcache {
@@ -5,7 +6,7 @@ public class LRUcache {
     private ListNode head;
     private ListNode tail;
     private Map<String,ListNode> cache;
-    LRUcache(int capacity) {
+    public LRUcache(int capacity) {
         this.capacity=capacity;
         this.head=new ListNode("head");
         this.tail=new ListNode("tail");
@@ -14,7 +15,7 @@ public class LRUcache {
         cache=new HashMap<>();
     }
 
-    void put(String key, String data){
+    public void put(String key, String data){
         if(cache.containsKey(data))
             return;
         if(cache.size()<capacity){
@@ -31,7 +32,7 @@ public class LRUcache {
         System.out.println(cache);
     }
 
-    String get(String key){
+    public String get(String key){
         if(cache.containsKey(key)){
             System.out.println("Data from cache");
             removeLRU();
@@ -43,7 +44,7 @@ public class LRUcache {
         return null;
     }
 
-    ListNode insertDataInLL(String data){
+    private ListNode insertDataInLL(String data){
         ListNode newNode = new ListNode(data);
         ListNode forward=head.next;
         head.next=newNode;
@@ -54,7 +55,7 @@ public class LRUcache {
         return newNode;
     }
 
-    void removeLRU(){
+    private void removeLRU(){
         ListNode prev=tail.prev.prev;
         ListNode lru=tail.prev;
         tail.prev=prev;
