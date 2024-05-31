@@ -1,9 +1,74 @@
-<mxfile host="app.diagrams.net" modified="2024-05-31T15:07:20.301Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" version="24.4.13" etag="NEmetOIqNE1_uikAoNuG" type="github">
+<mxfile host="app.diagrams.net" modified="2024-05-31T15:24:34.011Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="o_9AyYy4iHNHkH-yjo0l" version="24.4.13" type="github">
   <diagram name="Page-1" id="DUHl2GO-ORB3OP8B6nXg">
-    <mxGraphModel>
+    <mxGraphModel dx="1376" dy="729" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="6juKa0mG4MQk_uubd0kr-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Main Server&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-2" value="&lt;b&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Client&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="660" y="150" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="6juKa0mG4MQk_uubd0kr-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-3" value="&lt;b&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Curl Request&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="660" y="290" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-4" value="&lt;b&gt;&lt;font style=&quot;font-size: 27px;&quot;&gt;Multi Threaded Proxy Server based on TCP&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="130" y="30" width="580" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.563;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="6juKa0mG4MQk_uubd0kr-2" target="6juKa0mG4MQk_uubd0kr-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-8" value="&lt;b&gt;&lt;font style=&quot;font-size: 19px;&quot;&gt;Compromised safety of the main server&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="220" y="380" width="380" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-9" value="&lt;b&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Direct Connection&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="35" y="140" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-10" value="Malicious programs&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#d79b00;fillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="480" y="230" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-11" value="Too many unnecessary&lt;div&gt;requests&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#d79b00;fillColor=#ffe6cc;" vertex="1" parent="1">
+          <mxGeometry x="470" y="290" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-12" value="&lt;b&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Main Server&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="30" y="680" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-13" value="&lt;b&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Client&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="662.5" y="640" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-15" value="&lt;b&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Curl Request&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="662.5" y="780" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-17" value="&lt;span style=&quot;font-size: 19px;&quot;&gt;&lt;b&gt;Ensures safety of the main server&lt;/b&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="245" y="860" width="330" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-18" value="&lt;span style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;Introduction of a&amp;nbsp;&lt;/b&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;Proxy Server&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="42.5" y="620" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="6juKa0mG4MQk_uubd0kr-21" target="6juKa0mG4MQk_uubd0kr-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-21" value="&lt;b&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Proxy Server&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="380" y="680" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1.019;entryY=0.556;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="6juKa0mG4MQk_uubd0kr-13" target="6juKa0mG4MQk_uubd0kr-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1.019;entryY=0.563;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="6juKa0mG4MQk_uubd0kr-15" target="6juKa0mG4MQk_uubd0kr-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-27" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;&lt;b&gt;Features&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;&lt;font style=&quot;font-size: 23px;&quot;&gt;1. Check for harmful requests.&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;2. Provides Multi threading.&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;3. Provides Caching.&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="255" y="900" width="330" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="6juKa0mG4MQk_uubd0kr-28" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Filtered Requests&lt;/font&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="690" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
