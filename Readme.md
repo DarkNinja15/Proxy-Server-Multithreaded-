@@ -4,6 +4,42 @@
 
 Welcome to the Multi-Threaded Proxy Server project! This Java-based application is designed to act as an intermediary between clients and servers, handling multiple client requests concurrently to ensure high performance and reliability.
 
+
+***
+## Working
+
+Step 1: Clone the repository
+
+```bash
+git clone https://github.com/DarkNinja15/Proxy-Server-Multithreaded-.git
+```
+
+Step 2: Run the Main Server
+
+```bash
+cd Main\ Server/ && npm install && npm run dev
+```
+
+Step 3: Compile and run the Proxy Server
+
+```bash
+javac TCPProxyServer.java && java TCPProxyServer
+```
+
+Step 4: Start the Client
+
+```bash
+cd client && javac client.java && java client
+```
+
+OR 
+
+You can also use the curl command to send a request to the proxy server:
+
+```bash
+curl -x http://localhost:8080
+```
+
 ***
 
 ## Project Journey
@@ -35,4 +71,12 @@ The proxy server acts as an intermediary between the client and the destination 
 #### Step 4: Need for a Thread Pool
 
 To handle multiple client requests concurrently, I implemented a thread pool that manages a pool of worker threads. When a client request arrives, the server assigns the request to an available worker thread from the thread pool.
+
+#### Step 5: Caching Responses
+
+To improve performance and reduce latency, I implemented a caching mechanism that stores responses from the destination server. When a client request arrives, the proxy server checks if the response is already cached and serves the cached response if available.
+This is done using the LRU (Least Recently Used) cache eviction policy.
+
+
+
 
