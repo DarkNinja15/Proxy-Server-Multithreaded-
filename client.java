@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class TCPClient {
+public class client {
     public static void main(String args[]) throws IOException {
         String hostname="localhost";
         int serverPort=8080;

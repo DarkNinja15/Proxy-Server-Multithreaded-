@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 import java.util.Scanner;
 
-public class TCPServer{
+public class TCPProxyServer{
     public static void main(String args[]) throws IOException{
         Scanner sc=new Scanner(System.in);
         int serverPort=8080;

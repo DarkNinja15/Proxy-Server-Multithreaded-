@@ -20,7 +20,7 @@ public class DestHandler implements Runnable{
             InputStream inFromDest=destSocket.getInputStream();
             OutputStream outToDest=destSocket.getOutputStream();
 
-            writeToStream(outToDest, "Hello from server");
+            writeToStream(outToDest, "Hello from proxy server");
 
             String data=readFromStream(inFromDest);
             System.out.println("Data from destination server: "+data);
