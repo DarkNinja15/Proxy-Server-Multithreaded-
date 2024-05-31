@@ -5,11 +5,13 @@ public class DestHandler implements Runnable{
     private final String destIP;
     private final int destPort;
     private final Socket clientSocket;
+    private final LRUcache cache;
 
-    DestHandler(String destIP,int destPort,Socket clientSocket){
+    DestHandler(String destIP,int destPort,Socket clientSocket,LRUcache cache){
         this.destIP=destIP;
         this.destPort=destPort;
         this.clientSocket=clientSocket;
+        this.cache=cache;
     }
 
     @Override
@@ -25,12 +27,18 @@ public class DestHandler implements Runnable{
             String data=readFromStream(inFromDest);
             System.out.println("Data from destination server: "+data);
 
+            cacheData(data);
+
             sendDataToClient(data);
 
             destSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void cacheData(String data){
+        cache.put(clientSocket.getInetAddress().toString(),data);
     }
 
     private void sendDataToClient(String data) throws IOException {

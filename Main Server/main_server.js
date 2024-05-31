@@ -20,5 +20,5 @@ const server = net.createServer((socket) => {
 });
 
 server.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Main Server listening on port ${port}`);
 });
