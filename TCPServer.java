@@ -20,12 +20,11 @@ public class TCPServer{
             System.out.println("Client connected on"+clientIP+" "+clientPort);
 
             // connecting to a destination server
-            threadPool.submitTask(new DestHandler("localhost", 8081));
+            threadPool.submitTask(new DestHandler("localhost", 8081,clientSocket));
 
-            clientSocket.close();
+            // clientSocket.close();
             sc.close();
         }
 
-        
     }
 }
