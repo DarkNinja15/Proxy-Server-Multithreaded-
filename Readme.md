@@ -73,7 +73,7 @@ _Destination Server Configurations:_
 **Step 3: Run the Main Server**
 
 ```bash
-cd cd mainServer/ && npm install && npm run dev
+cd mainServer/ && npm install && npm run dev
 ```
 
 **Step 4: Compile and run the Proxy Server**
