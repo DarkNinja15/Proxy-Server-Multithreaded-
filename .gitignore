@@ -1,2 +1,2 @@
 *.class
-Main Server/node_modules
+mainServer/*/node_modules
