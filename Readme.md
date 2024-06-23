@@ -8,6 +8,8 @@ Welcome to the Multi-Threaded Proxy Server project! This Java-based application 
 ***
 ## Working
 
+##### Note: The project is currently under development and the following steps may not work as expected.
+
 To get started, there are a few prerequisites that need to be installed on your system:
 
 - Java Development Kit (JDK)
