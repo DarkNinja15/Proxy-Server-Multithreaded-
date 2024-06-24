@@ -1,6 +1,7 @@
 import threadPool.ProxyThreadPool;
 import lruCache.LRUcache;
 import requestHandler.TcpHandler;
+import requestHandler.httpHandler.HttpHandler;
 import requestPackets.HttpRequestPacket;
 import requestParsers.HttpRequestParser;
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
 import configurations.Config;
 
 public class TCPProxyServer {
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
         int serverPort = Config.serverPort;
         @SuppressWarnings("resource")
@@ -77,16 +78,13 @@ public class TCPProxyServer {
                     // Parse the request
                     String httpRequest = request.toString();
                     System.out.println("Received HTTP request:\n" + httpRequest);
-                    HttpRequestPacket parsedRequest = HttpRequestParser.parseRequest(httpRequest);
+                    HttpRequestPacket httpPacket = HttpRequestParser.parseRequest(httpRequest);
 
-                    System.out.println("Parsed Request: " + parsedRequest.toString());
+                    HttpHandler httpHandler= new HttpHandler(httpPacket);
 
+                    
                     // Respond to client
-                    String httpResponse = "HTTP/1.1 200 OK\r\n"
-                            + "Content-Length: 0\r\n"
-                            + "\r\n";
-
-                    output.write(httpResponse.getBytes());
+                    output.write((String.valueOf(httpHandler.getResponse().statusCode())+" "+httpHandler.getResponse().body()).getBytes());
                     output.flush();
 
                     sc.close();

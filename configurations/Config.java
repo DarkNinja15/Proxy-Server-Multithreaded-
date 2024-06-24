@@ -17,4 +17,7 @@ public class Config{
 
     // select server type
     public static final ServerType serverType=ServerType.HTTP;
+
+    public static final String httpServerHost="http://localhost:3000";
+    public static final int connectionTimeout=5000;
 }

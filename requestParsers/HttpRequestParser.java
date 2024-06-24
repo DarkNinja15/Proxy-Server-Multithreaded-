@@ -34,6 +34,9 @@ public class HttpRequestParser {
             i++;
         }
 
+        headers.remove("Host");
+        headers.remove("Content-Length");
+
         // Parse body
         StringBuilder body = new StringBuilder();
         i++;
