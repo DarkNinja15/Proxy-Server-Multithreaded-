@@ -15,19 +15,45 @@ public class client {
 
         // send data to server
         String body = "{\"username\": \"johndoe\", \"email\": \"johndoe@example.com\"}";
-        String httpRequest = "POST /?include=details&expand=all HTTP/1.1\r\n"
+        String httpGETRequest = "GET /?include=details&expand=all HTTP/1.1\r\n"
+                              + "Host: example.com\r\n"
+                              + "User-Agent: JavaClient/1.0\r\n"
+                              + "Content-Type: application/json\r\n"
+                              + "Content-Length: " + body.length() + "\r\n"
+                              + "\r\n"
+                              + body;
+
+
+        String httpPOSTRequest = "POST /?include=details&expand=all HTTP/1.1\r\n"
                                + "Host: example.com\r\n"
                                + "User-Agent: JavaClient/1.0\r\n"
                                + "Content-Type: application/json\r\n"
                                + "Content-Length: " + body.length() + "\r\n"
                                + "\r\n"
                                + body;
+
+        String httpPUTRequest = "PUT /?include=details&expand=all HTTP/1.1\r\n"
+                              + "Host: example.com\r\n"
+                              + "User-Agent: JavaClient/1.0\r\n"
+                              + "Content-Type: application/json\r\n"
+                              + "Content-Length: " + body.length() + "\r\n"
+                              + "\r\n"
+                              + body;
+
+        String httpDELETERequest = "DELETE /?include=details&expand=all HTTP/1.1\r\n"
+                                 + "Host: example.com\r\n"
+                                 + "User-Agent: JavaClient/1.0\r\n"
+                                 + "Content-Type: application/json\r\n"
+                                 + "Content-Length: " + body.length() + "\r\n"
+                                 + "\r\n"
+                                 + body;
+
         OutputStream output=clientSocket.getOutputStream();
 
         // sent time to server
         Date date = new Date();
 
-        output.write(httpRequest.getBytes());
+        output.write(httpGETRequest.getBytes());
         output.flush();
 
 
