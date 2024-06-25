@@ -21,7 +21,31 @@ As we can see there is a very minimal difference between the two methods. The av
 The test is done by sending a POST request to the server and measuring the time it takes to get a response. The test is done 5 times and the average time is calculated. The test is done on a local server and the client is on the same network as the server.
 
 The POST request sent has a body,header and query parameters. The body is a JSON object, the header is a key-value pair and the query parameters are key-value pairs.
+***
 
+## Connect your own server to the proxy server
+
+### Why connect your own server?
+
+Connecting your own server to the proxy server allows you to test the proxy server with your own server and see how it performs. You can send requests to your server through the proxy server and observe the response times and performance.
+
+### How to connect your own server?
+
+To connect your own server to the proxy server, you need to follow these steps:
+
+1. Set up your own server: You need to have your own server running on a specific host and port. The server can be a TCP server, an HTTP server, or any other type of server that you want to test with the proxy server.(TCP connection does not have all the features as HTTP connection)
+
+2. Update the configurations: You need to update the configurations in the `Config.java` file to specify the host and port of your server. You can specify the host and port for the TCP server or the HTTP server, depending on the type of server you are using.
+
+3. Start your server: You need to start your server before starting the proxy server. Make sure that your server is running and listening for incoming connections on the specified host and port.
+
+4. Start the proxy server: Once your server is running, you can start the proxy server by compiling and running the `TCPProxyServer.java` file. The proxy server will listen for incoming client connections and forward the requests to your server.
+
+5. Send requests to the proxy server: You can send requests to the proxy server using the client program or any other tool that you prefer. The proxy server will forward the requests to your server, and you can observe the response times and performance.
+
+NOTE: You need to establish a TCP connection between the client and the proxy server no matter what type of server you are using.
+
+You can see the example in [client]([Config.java](https://github.com/DarkNinja15/Proxy-Server-Multithreaded-/blob/main/configurations/Config.java)) floder.
 
 ## Working
 
@@ -83,16 +107,29 @@ _Thread Pool Configurations:_
 _Caching Configurations:_
 - `cacheSize`: The maximum number of responses that can be stored in the cache.
 
-_Destination Server Configurations:_
-- `destServerIP`: The host name of the destination server to which client requests are forwarded.
-- `destServerPort`: The port number of the destination server.
+_Server Type:_
+- `serverType`: The type of server to run (for now only tcp and http option are available).
+
+_TCP Server Configurations:_
+- `tcpServerHost`: The host name of the destination server to which client requests are forwarded.
+- `tcpServerPort`: The port number of the destination server.
+
+_HTTP Server Configurations:_
+- `httpServerHost`: The host name and the port of the destination server to which client requests are forwarded.
+
 
 *Note: The destination or main server should be running on the specified host and port before starting the proxy server.*
 
 **Step 3: Run the Main Server**
 
+For TCP Server:
 ```bash
-cd mainServer/ && npm install && npm run dev
+cd mainServer/node_tcp_server/ && npm install && npm run dev
+```
+
+For HTTP Server:
+```bash
+cd mainServer/node_express_server/ && npm install && npm run dev
 ```
 
 **Step 4: Compile and run the Proxy Server**
@@ -116,7 +153,7 @@ curl http://localhost:<PROXY_SERVER_PORT>
 ```
 Replace <PROXY_SERVER_PORT> with the port number on which the proxy server is running.
 
-Find it in the [Config.java](https://github.com/DarkNinja15/Proxy-Server-Multithreaded-/blob/main/Config.java) file.
+Find it in the [Config.java](https://github.com/DarkNinja15/Proxy-Server-Multithreaded-/blob/main/configurations/Config.java) file.
 
 ***
 
