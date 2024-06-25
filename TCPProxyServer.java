@@ -41,8 +41,8 @@ public class TCPProxyServer {
                     }
 
                     // connecting to a destination server
-                    threadPool.submitTask(new TcpHandler(Config.destServerIP,
-                            Config.destServerPort, clientSocket, cache));
+                    threadPool.submitTask(new TcpHandler(Config.tcpServerHost,
+                            Config.tcpServerPort, clientSocket, cache));
 
                     sc.close();
                 }

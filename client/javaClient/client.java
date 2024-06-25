@@ -1,4 +1,4 @@
-package client;
+package client.javaClient;
 import java.net.*;
 import java.util.Date;
 import java.io.IOException;

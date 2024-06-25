@@ -11,13 +11,12 @@ public class Config{
     public static final int cacheSize=2;
 
     // destination server configuration
-    public static final String destServerIP="localhost";
-    public static final int destServerPort=8081;
+    public static final String tcpServerHost="localhost";
+    public static final int tcpServerPort=8081;
 
 
     // select server type
     public static final ServerType serverType=ServerType.HTTP;
 
     public static final String httpServerHost="http://localhost:3000";
-    public static final int connectionTimeout=5000;
 }
