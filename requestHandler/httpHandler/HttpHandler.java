@@ -1,6 +1,10 @@
 package requestHandler.httpHandler;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -11,15 +15,45 @@ import java.util.stream.Collectors;
 
 import configurations.Config;
 import requestPackets.HttpRequestPacket;
+import requestParsers.HttpRequestParser;
 
-public class HttpHandler {
+public class HttpHandler implements Runnable {
     private HttpRequestPacket httpPacket;
     private HttpClient client;
     private HttpResponse<String> response;
+    private OutputStream output;
 
-    public HttpHandler(HttpRequestPacket httpPacket) throws IOException {
-        this.httpPacket = httpPacket;
+    public HttpHandler(Socket clientSocket) throws IOException {
+        this.output = clientSocket.getOutputStream();
         client = HttpClient.newHttpClient();
+        BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+        StringBuilder request = new StringBuilder();
+        String line;
+        int contentLength = 0;
+
+        // Read request headers
+        while (!(line = input.readLine()).isBlank()) {
+            request.append(line).append("\r\n");
+            if (line.startsWith("Content-Length")) {
+                contentLength = Integer.parseInt(line.split(": ")[1]);
+            }
+        }
+        request.append("\r\n");
+
+        // Read request body
+        char[] body = new char[contentLength];
+        input.read(body, 0, contentLength);
+        request.append(body);
+
+        // Parse the request
+        String httpRequest = request.toString();
+        System.out.println("Received HTTP request:\n" + httpRequest);
+        this.httpPacket = HttpRequestParser.parseRequest(httpRequest);
+    }
+
+    @Override
+    public void run() {
         try {
             System.out.println("method=" + httpPacket.method);
             if (httpPacket.method.equals("GET")) {
@@ -33,11 +67,22 @@ public class HttpHandler {
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                sendResponse();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public HttpResponse<String> getResponse() {
+    private HttpResponse<String> getResponse() {
         return response;
+    }
+
+    private void sendResponse() throws IOException{
+        output.write((String.valueOf(getResponse().statusCode())+" "+getResponse().body()).getBytes());
+        output.flush();
     }
 
     private void getRequest() throws IOException, InterruptedException {
@@ -73,8 +118,8 @@ public class HttpHandler {
     private void deleteRequest() throws IOException, InterruptedException {
         HttpRequest request = buildRequestBuilder().DELETE().build();
         response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println("Status Code: " + response.statusCode());
-            System.out.println("Response Body: " + response.body());
+        System.out.println("Status Code: " + response.statusCode());
+        System.out.println("Response Body: " + response.body());
     }
 
     private HttpRequest.Builder buildRequestBuilder() {

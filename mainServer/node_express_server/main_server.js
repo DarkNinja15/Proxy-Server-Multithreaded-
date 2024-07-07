@@ -5,10 +5,13 @@ const PORT = 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    console.log("GET request received");
+    setTimeout(() => {
+        console.log("GET request received");
     console.log(req.headers);
     console.log(req.query);
-    res.status(200).json({"message":"Hello World!"});
+    res.status(200).json({"message":"Hello World! after 5 seconds"});
+    }, 5000);
+    
 });
 
 app.post('/', (req, res) => {

@@ -2,8 +2,6 @@ import threadPool.ProxyThreadPool;
 import lruCache.LRUcache;
 import requestHandler.TcpHandler;
 import requestHandler.httpHandler.HttpHandler;
-import requestPackets.HttpRequestPacket;
-import requestParsers.HttpRequestParser;
 
 import java.net.*;
 import java.io.*;
@@ -54,38 +52,7 @@ public class TCPProxyServer {
                     int clientPort = clientSocket.getPort();
                     System.out.println("Client connected on " + clientIP + ":" + clientPort);
 
-                    BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                    OutputStream output = clientSocket.getOutputStream();
-
-                    StringBuilder request = new StringBuilder();
-                    String line;
-                    int contentLength = 0;
-
-                    // Read request headers
-                    while (!(line = input.readLine()).isBlank()) {
-                        request.append(line).append("\r\n");
-                        if (line.startsWith("Content-Length")) {
-                            contentLength = Integer.parseInt(line.split(": ")[1]);
-                        }
-                    }
-                    request.append("\r\n");
-
-                    // Read request body
-                    char[] body = new char[contentLength];
-                    input.read(body, 0, contentLength);
-                    request.append(body);
-
-                    // Parse the request
-                    String httpRequest = request.toString();
-                    System.out.println("Received HTTP request:\n" + httpRequest);
-                    HttpRequestPacket httpPacket = HttpRequestParser.parseRequest(httpRequest);
-
-                    HttpHandler httpHandler= new HttpHandler(httpPacket);
-
-                    
-                    // Respond to client
-                    output.write((String.valueOf(httpHandler.getResponse().statusCode())+" "+httpHandler.getResponse().body()).getBytes());
-                    output.flush();
+                    threadPool.submitTask(new HttpHandler(clientSocket));
 
                     sc.close();
                 }
