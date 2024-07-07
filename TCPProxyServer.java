@@ -7,6 +7,7 @@ import java.net.*;
 import java.io.*;
 import java.util.Scanner;
 
+import client.javaClient.client;
 import configurations.Config;
 
 public class TCPProxyServer {
@@ -30,6 +31,13 @@ public class TCPProxyServer {
                     String clientIP = clientSocket.getInetAddress().toString();
                     int clientPort = clientSocket.getPort();
                     System.out.println("Client connected on " + clientIP + ":" + clientPort);
+                    System.out.println("Client connected on " + clientIP + ":" + clientPort);
+
+                    if(Config.blacklistedIPs.contains(clientIP)){
+                        System.out.println("Blacklisted IP");
+                        clientSocket.close();
+                        continue;
+                    }
 
                     if (cache.get(clientIP) != null) {
                         String data = cache.get(clientIP);
@@ -52,6 +60,11 @@ public class TCPProxyServer {
                     int clientPort = clientSocket.getPort();
                     System.out.println("Client connected on " + clientIP + ":" + clientPort);
 
+                    if(Config.blacklistedIPs.contains(clientIP)){
+                        System.out.println("Blacklisted IP");
+                        clientSocket.close();
+                        continue;
+                    }
                     threadPool.submitTask(new HttpHandler(clientSocket));
 
                     sc.close();

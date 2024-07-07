@@ -1,4 +1,7 @@
 package configurations;
+
+import java.util.HashSet;
+
 public class Config{
     public static final int serverPort=8080;
 
@@ -19,4 +22,10 @@ public class Config{
     public static final ServerType serverType=ServerType.HTTP;
 
     public static final String httpServerHost="http://localhost:3000";
+
+
+    // blacklisted IPs
+    public static final HashSet<String> blacklistedIPs = new HashSet<String>() {{
+        // add("/127.0.0.1");
+    }};
 }
